@@ -48,6 +48,7 @@
     <link href="{{ asset('assets/lib/select2/css/select2.min.css') }}" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('assets/css/bracket.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
     @yield('css')
 
