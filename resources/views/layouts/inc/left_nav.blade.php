@@ -5,12 +5,12 @@
         <a href="" class="br-menu-link">
             <div class="br-menu-item">
                 <i class="menu-item-icon icon ion-ios-filing-outline tx-24"></i>
-                <span class="menu-item-label">Management</span>
+                <span class="menu-item-label">Album Management</span>
                 <i class="menu-item-arrow fa fa-angle-down"></i>
             </div>
         </a>
         <ul class="br-menu-sub nav flex-column">
-            <li @if (\Request::is()) class='active' @endif class="nav-item"><a href="" class="nav-link">Nav Link</a></li>
+            <li @if (\Request::is()) class='active' @endif class="nav-item"><a href="{{URL::route('create_album_form')}}" class="nav-link">Create Album</a></li>
         </ul>
     </div>
 </div>
