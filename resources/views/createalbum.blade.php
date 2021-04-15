@@ -51,7 +51,7 @@
             </div>
 
             <div class="form-layout-footer">
-                <button type="submit" class="btn btn-info">Submit Form</button>
+                <button type="submit" class="btn btn-info">Create Album</button>
                 <button class="btn btn-secondary">Cancel</button>
             </div>
         </div>
