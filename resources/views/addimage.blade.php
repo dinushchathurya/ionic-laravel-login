@@ -1,52 +1,61 @@
-<!doctype html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Laravel PHP Framework</title>
-    <!-- Latest compiled and minified CSS -->
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/css/bootstrap.min.css" rel="stylesheet">
+@extends('layouts.app')
 
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-rc1/js/bootstrap.min.js"></script>
-  </head>
-  <body>
+@section('content')
 
-    <div class="container" style="text-align: center;">
-      <div class="span4" style="display: inline-block;margin-top:100px;">
-        @if(isset($errors) && $errors->has(''))
-          <div class="alert alert-block alert-error fade in"id="error-block">
+<div class="br-pageheader pd-y-15 pd-l-20">
+    <nav class="breadcrumb pd-0 mg-0 tx-12">
+    </nav>
+</div>
+
+<div class="br-pagebody">
+    <div class="br-section-wrapper">
+        @if (isset($errors) && $errors->has(''))
+        <div class="alert alert-block alert-error fade in" id="error-block">
             <?php
-            $messages = $errors->all('<li>:message</li>');
+             $messages = $errors->all('<li>:message</li>');
             ?>
-            <button type="button" class="close"data-dismiss="alert">×</button>
+            <button type="button" class="close" data-dismiss="alert">×</button>
 
             <h4>Warning!</h4>
             <ul>
-              @foreach($messages as $message)
+                @foreach($messages as $message)
                 {{$message}}
-              @endforeach
-
+                @endforeach
             </ul>
-          </div>
+        </div>
         @endif
-        <form name="addimagetoalbum" method="POST"action="{{URL::route('add_image_to_album')}}"enctype="multipart/form-data">
+        <form name="addimagetoalbum" method="POST" action="{{URL::route('add_image_to_album')}}" enctype="multipart/form-data">
             {{ csrf_field() }}
-          <input type="hidden" name="album_id"value="{{$album->id}}" />
-          <fieldset>
-            <legend>Add an Image to {{$album->name}}</legend>
-            <div class="form-group">
-              <label for="description">Image Description</label>
-              <textarea name="description" type="text"class="form-control" placeholder="Imagedescription"></textarea>
+            <input type="hidden" name="album_id" value="{{$album->id}}" />
+            <div class="form-layout form-layout-1">
+
+                <div class="row mg-b-25">
+
+                    <div class="col-lg-4">
+                       <div class="form-group">
+                           <label for="description">Image Description</label>
+                           <textarea name="description" type="text" class="form-control" placeholder="Imagedescription"></textarea>
+                       </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="form-group">
+                            <label for="image">Select an Image</label>
+                            {{Form::file('image')}}
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-layout-footer">
+                    <button type="submit" class="btn btn-info">Add Image</button>
+                    <button class="btn btn-secondary">Cancel</button>
+                </div>
+
             </div>
-            <div class="form-group">
-              <label for="image">Select an Image</label>
-              {{Form::file('image')}}
-            </div>
-            <button type="submit" class="btnbtn-default">Add Image!</button>
-          </fieldset>
         </form>
-      </div>
-    </div> <!-- /container -->
-  </body>
-</html>
+    </div>
+</div>
+
+@endsection
+
